@@ -1,0 +1,25 @@
+name: Run WhatsApp Bot
+
+on:
+  push:
+    branches:
+      - main  # Workflow akan dijalankan saat ada perubahan di branch 'main'
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Mengambil kode dari repository
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # Gunakan versi Node.js yang sesuai dengan proyek Anda
+
+    - name: Install dependencies
+      run: npm install  # Pastikan package.json tersedia di root
+
+    - name: Run WhatsApp Bot
+      run: node index.js  # Jalankan file utama bot Anda
